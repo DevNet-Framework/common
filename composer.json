@@ -1,0 +1,23 @@
+{
+    "name": "devnet/common",
+    "description": "The DevNet services that are commonly needed",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mohammed Moussaoui",
+            "email": "m.moussaoui@outlook.com"
+        }
+    ],
+    "require": {
+        "devnet/core": "1.0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "DevNet\\Common\\": "src/"
+        },
+        "files": [
+            "global.php"
+        ]
+    }
+}

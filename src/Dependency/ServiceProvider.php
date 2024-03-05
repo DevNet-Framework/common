@@ -8,6 +8,8 @@
 
 namespace DevNet\Common\Dependency;
 
+use DevNet\System\Activator;
+
 class ServiceProvider implements IServiceProvider
 {
     private array $instanceServices = [];
@@ -50,7 +52,25 @@ class ServiceProvider implements IServiceProvider
                         }
                     }
 
-                    $instance = Activator::CreateInstance($serviceDescriptor->ImplementationType, $this);
+                    $instance = Activator::CreateInstance($serviceDescriptor->ImplementationType, [$this], 
+                    function (array $args, array $params) {
+                        $provider = $args[0];
+                        $args = [];
+                        foreach ($params as $parameter) {
+                            $parameterType = '';
+                            if ($parameter->getType()) {
+                                $parameterType = $parameter->getType()->getName();
+                            }
+
+                            if (!$provider->contains($parameterType)) {
+                                break;
+                            }
+
+                            $args[] = $provider->getService($parameterType);
+                        }
+
+                        return $args;
+                    });
                     $this->instanceServices[$serviceType] = $instance;
                     return $instance;
                 }

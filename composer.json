@@ -1,6 +1,6 @@
 {
     "name": "devnet/common",
-    "description": "The DevNet services that are commonly needed",
+    "description": "The DevNet Common Library",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "devnet/core": "1.0.*"
+        "devnet/system": "1.1.*"
     },
     "autoload": {
         "psr-4": {

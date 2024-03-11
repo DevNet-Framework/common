@@ -1,5 +1,5 @@
 # DevNet Common
-This dependency is the common services needed for **DevNet Application**, which includes the following Base Class Library:
+This dependency is the common library needed for **DevNet Application**, which includes the following Base Class Library:
 
 - Configuration Provider
 - Dependency Injection
@@ -10,7 +10,7 @@ This dependency is the common services needed for **DevNet Application**, which 
 - [Composer](https://getcomposer.org/) version 2.0 or higher
 
 ## Installation
-You can install DevNet Core as a third-party library to work with any PHP project, by running the following command in the terminal:
+You can install DevNet Common as a third-party library to any PHP project, by running the following command in the terminal:
 
 ```bash
 composer require devnet/common

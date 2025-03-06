@@ -11,15 +11,12 @@ namespace DevNet\Common\Dependency;
 use DevNet\System\Exceptions\ArgumentException;
 use DevNet\System\Exceptions\ClassException;
 use DevNet\System\Exceptions\TypeException;
-use DevNet\System\PropertyTrait;
 use DevNet\System\Type;
 use ReflectionFunction;
 use Closure;
 
 class ServiceDescriptor
 {
-    use PropertyTrait;
-
     public const Singleton = 1;
     public const Transient = 2;
 
@@ -28,6 +25,12 @@ class ServiceDescriptor
     private ?string $implementationType = null;
     private ?object $implementationInstance = null;
     private ?Closure $implementationFactory = null;
+
+    public int $Lifetime { get => $this->lifetime; }
+    public string $ServiceType { get => $this->serviceType; }
+    public ?string $ImplementationType { get => $this->implementationType; }
+    public ?object $ImplementationInstance { get => $this->implementationInstance; }
+    public ?Closure $ImplementationFactory { get => $this->implementationFactory; }
 
     public function __construct(int $lifetime, string $serviceType, $service = null)
     {
@@ -78,30 +81,5 @@ class ServiceDescriptor
                 throw new ArgumentException(static::class . "::__construct() The argument #3 must be of type string, object or closure", 0, 1);
                 break;
         }
-    }
-
-    public function get_Lifetime(): int
-    {
-        return $this->lifetime;
-    }
-
-    public function get_ServiceType(): string
-    {
-        return $this->serviceType;
-    }
-
-    public function get_ImplementationType(): ?string
-    {
-        return $this->implementationType;
-    }
-
-    public function get_ImplementationInstance(): ?object
-    {
-        return $this->implementationInstance;
-    }
-
-    public function get_ImplementationFactory(): ?Closure
-    {
-        return $this->implementationFactory;
     }
 }

@@ -8,22 +8,15 @@
 
 namespace DevNet\Common\Configuration;
 
-use DevNet\System\PropertyTrait;
-
 class ConfigurationRoot implements IConfiguration
 {
-    use PropertyTrait;
-
     private array $settings = [];
+
+    public array $Settings { get => $this->settings; }
 
     public function __construct(array $settings = [])
     {
         $this->settings = $settings;
-    }
-
-    public function get_Settings(): array
-    {
-        return $this->settings;
     }
 
     public function getValue(string $key)

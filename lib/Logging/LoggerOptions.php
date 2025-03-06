@@ -10,24 +10,15 @@ namespace DevNet\Common\Logging;
 
 use DevNet\Common\Logging\Console\ConsoleLoggerProvider;
 use DevNet\Common\Logging\File\FileLoggerProvider;
-use DevNet\System\PropertyTrait;
 
 class LoggerOptions
 {
-    use PropertyTrait;
-
     private array $filters = [];
     private array $providers = [];
 
-    public function get_Filters(): array
-    {
-        return $this->filters;
-    }
-
-    public function get_Providers(): array
-    {
-        return $this->providers;
-    }
+    public array $Filters { get => $this->filters; }
+    public array $Providers { get => $this->providers; }
+    public LogLevel $MinimumLevel { set => $this->addFilter('', $value); }
 
     public function setMinimumLevel(LogLevel $level): void
     {
